@@ -1,6 +1,7 @@
 package com.interview.webserver2.view.controllers;
 
 import com.interview.webserver2.logic.services.DocumentService;
+import com.interview.webserver2.model.Create;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -36,7 +37,8 @@ public class DocumentController {
             message = "Successfully retrieved list of all clients")
     @PostMapping("/document/create")
     public ResponseEntity<?> getDocument(@RequestBody com.interview.webserver2.model.Create create) throws InterruptedException {
-        documentService.sendToSecondServer(create);
+        Create saveCreate = create;
+        documentService.sendToSecondServer(saveCreate);
         return ok();
     }
 }
